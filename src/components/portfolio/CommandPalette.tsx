@@ -40,13 +40,6 @@ export default function CommandPalette() {
 
   const commands: CommandItem[] = [
     {
-      id: "scan",
-      title: "AI Buying Signal Scanner (algoacquisition Demo)",
-      category: "Interactive Feature",
-      icon: "⚡",
-      action: () => scrollTo("signal-scanner")
-    },
-    {
       id: "mentorship",
       title: "YouTube & Mentorship Hub (Self Taught Bob)",
       category: "Community & Video",

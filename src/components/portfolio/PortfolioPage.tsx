@@ -14,9 +14,7 @@ import AmbientSnake from "./AmbientSnake";
 import CometShower from "./CometShower";
 import Terminal from "./Terminal";
 
-import About from "./About";
-import SignalScanner from "./SignalScanner";
-import YouTubeHub from "./YouTubeHub";
+import CertificationsVault from "./CertificationsVault";
 import CommandPalette from "./CommandPalette";
 
 export default function PortfolioPage() {
@@ -57,10 +55,8 @@ export default function PortfolioPage() {
       <Navbar />
       <main>
         <Hero />
-        <About />
         <Skills />
-        <SignalScanner />
-        <YouTubeHub />
+        <CertificationsVault />
         <Education />
         <Projects />
         <Contact />

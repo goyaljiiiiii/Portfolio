@@ -5,10 +5,8 @@ import { useEffect, useMemo, useState } from "react";
 
 const navItems = [
   { id: "hero", label: "Home" },
-  { id: "about", label: "About" },
   { id: "tech-stack", label: "Tech" },
-  { id: "signal-scanner", label: "AI Outbound" },
-  { id: "mentorship", label: "YouTube" },
+  { id: "certifications", label: "Certs" },
   { id: "experience", label: "Experience" },
   { id: "education", label: "Education" },
   { id: "projects", label: "Projects" },

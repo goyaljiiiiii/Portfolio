@@ -2,6 +2,7 @@
 
 import { motion, AnimatePresence } from "framer-motion";
 import * as React from "react";
+import TextScramble from "./TextScramble";
 
 const projects = [
   {
@@ -75,7 +76,7 @@ export default function Projects() {
             </span>
           </div>
           <h2 className="font-mono text-3xl font-light tracking-widest text-white md:text-5xl uppercase">
-            Data<span className="text-white/30">Cores</span>
+            <TextScramble text="DATA CORES" />
           </h2>
           <p className="mt-4 font-mono text-xs text-white/40 tracking-widest uppercase">
             [ Select Microchip to extract data ]
@@ -136,105 +137,106 @@ export default function Projects() {
             onClick={() => setActiveId(projects[2].id)}
           />
 
-          {/* Massive Expanding Tooltip (Data Core) */}
-          <AnimatePresence>
-            {activeProject && (
-              <motion.div
-                initial={{ opacity: 0, scale: 0.9, y: 20 }}
-                animate={{ opacity: 1, scale: 1, y: 0 }}
-                exit={{ opacity: 0, scale: 0.9, y: 20 }}
-                transition={{ type: "spring", stiffness: 300, damping: 25 }}
-                className="fixed inset-0 z-[100] flex items-center justify-center p-2 md:p-6"
-                onClick={() => setActiveId(null)}
-              >
-                {/* Blur backdrop */}
-                <div className="absolute inset-0 bg-black/80 backdrop-blur-md pointer-events-none" />
-                
-                <div 
-                  className={`relative w-full max-w-4xl max-h-[60vh] md:max-h-[85vh] bg-[#0a0f1a] border border-white/20 p-4 md:p-12 shadow-[0_0_80px_rgba(0,0,0,0.8)] rounded-xl flex flex-col overflow-hidden pointer-events-auto`}
-                  onClick={(e) => e.stopPropagation()}
-                >
-                  <div className={`absolute top-0 left-0 w-full h-1 ${colorMap[activeProject.color as keyof typeof colorMap].bg}`} />
-                  
-                  {/* Fixed Close Button */}
-                  <button 
-                    onClick={() => setActiveId(null)}
-                    className="absolute top-4 right-4 md:top-6 md:right-6 z-20 font-mono text-[10px] text-white/50 hover:text-white uppercase tracking-widest bg-black/80 backdrop-blur px-2 py-1 rounded border border-white/10 md:bg-transparent md:border-transparent"
-                  >
-                    [ Close ]
-                  </button>
-
-                  {/* Scrollable Content */}
-                  <div className="overflow-y-auto custom-scrollbar flex-1 min-h-0 -mx-2 px-2 mt-8 md:mt-0">
-
-                  <div className="flex flex-col md:flex-row gap-6 md:gap-12">
-                    
-                    {/* Data Pane */}
-                    <div className="flex-1">
-                      <div className={`mb-2 font-mono text-[9px] md:text-[10px] tracking-[0.3em] uppercase ${colorMap[activeProject.color as keyof typeof colorMap].text}`}>
-                        {activeProject.label}
-                      </div>
-                      <h3 className="text-xl md:text-5xl font-bold uppercase tracking-tight text-white mb-3 md:mb-6">
-                        {activeProject.name}
-                      </h3>
-                      
-                      <p className="text-xs md:text-base text-white/70 leading-relaxed mb-4 md:mb-8">
-                        {activeProject.description}
-                      </p>
-
-                      <div className="flex flex-wrap gap-2 mb-6 md:mb-8">
-                        {activeProject.stack.map(s => (
-                          <span key={s} className="border border-white/10 bg-white/[0.05] px-2 md:px-3 py-1 font-mono text-[8px] md:text-[10px] uppercase tracking-[0.2em] text-white/60">
-                            {s}
-                          </span>
-                        ))}
-                      </div>
-
-                      <div className="flex gap-6 font-mono text-[11px] uppercase tracking-widest mt-auto">
-                        <a href={activeProject.live} target="_blank" rel="noopener noreferrer" className={`transition-colors hover:text-white ${colorMap[activeProject.color as keyof typeof colorMap].text}`}>
-                          Execute Live ↗
-                        </a>
-                        <a href={activeProject.code} target="_blank" rel="noopener noreferrer" className="text-white/40 hover:text-white transition-colors">
-                          Source Code ↗
-                        </a>
-                      </div>
-                    </div>
-
-                    {/* Hardware Schema Diagram (Desktop Only) */}
-                    <div className="hidden md:flex w-full md:w-1/3 border border-white/10 bg-[#050505] p-6 flex-col justify-between font-mono">
-                      <div>
-                        <div className="text-[9px] text-white/40 tracking-[0.3em] uppercase border-b border-white/10 pb-2 mb-4">
-                          Hardware Specs
-                        </div>
-                        <div className="text-xs text-white/60 space-y-3">
-                          <div className="flex justify-between"><span>CPU_ID</span> <span className="text-white">{activeProject.cpu}</span></div>
-                          <div className="flex justify-between"><span>TYPE</span> <span className="text-white">{activeProject.type}</span></div>
-                          <div className="flex justify-between"><span>STATUS</span> <span className="text-green-400">ONLINE</span></div>
-                          <div className="flex justify-between"><span>MEM</span> <span className="text-white">OPTIMIZED</span></div>
-                        </div>
-                      </div>
-
-                      {/* Cool animated diagram */}
-                      <div className="mt-8 relative h-24 border border-white/10 bg-[linear-gradient(rgba(255,255,255,0.05)_1px,_transparent_1px),_linear-gradient(90deg,_rgba(255,255,255,0.05)_1px,_transparent_1px)] [background-size:10px_10px]">
-                        <motion.div 
-                          className={`absolute top-1/2 left-1/4 h-8 w-8 -translate-y-1/2 ${colorMap[activeProject.color as keyof typeof colorMap].bg} opacity-20 blur-md`}
-                          animate={{ opacity: [0.2, 0.6, 0.2] }}
-                          transition={{ duration: 2, repeat: Infinity }}
-                        />
-                        <div className={`absolute top-1/2 left-1/4 h-2 w-2 -translate-y-1/2 ${colorMap[activeProject.color as keyof typeof colorMap].bg}`} />
-                        <div className={`absolute top-1/2 left-1/4 w-1/2 h-px -translate-y-1/2 ${colorMap[activeProject.color as keyof typeof colorMap].bg} opacity-50`} />
-                        <div className={`absolute top-1/2 right-1/4 h-4 w-4 -translate-y-1/2 border border-white/40`} />
-                      </div>
-                    </div>
-
-                  </div>
-                  </div>
-                </div>
-              </motion.div>
-            )}
-          </AnimatePresence>
-
         </div>
+
+        {/* Massive Expanding Tooltip (Data Core) - Rendered outside overflow-hidden */}
+        <AnimatePresence>
+          {activeProject && (
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.9, y: 20 }}
+              transition={{ type: "spring", stiffness: 300, damping: 25 }}
+              className="fixed inset-0 z-[150] flex items-center justify-center p-2 md:p-6"
+              onClick={() => setActiveId(null)}
+            >
+              {/* Blur backdrop */}
+              <div className="absolute inset-0 bg-black/80 backdrop-blur-md pointer-events-none" />
+              
+              <div 
+                className={`relative w-full max-w-4xl max-h-[60vh] md:max-h-[85vh] bg-[#0a0f1a] border border-white/20 p-4 md:p-12 shadow-[0_0_80px_rgba(0,0,0,0.8)] rounded-xl flex flex-col overflow-hidden pointer-events-auto`}
+                onClick={(e) => e.stopPropagation()}
+              >
+                <div className={`absolute top-0 left-0 w-full h-1 ${colorMap[activeProject.color as keyof typeof colorMap].bg}`} />
+                
+                {/* Fixed Close Button */}
+                <button 
+                  onClick={() => setActiveId(null)}
+                  className="absolute top-4 right-4 md:top-6 md:right-6 z-20 font-mono text-[10px] text-white/50 hover:text-white uppercase tracking-widest bg-black/80 backdrop-blur px-2 py-1 rounded border border-white/10 md:bg-transparent md:border-transparent cursor-pointer"
+                >
+                  [ Close ]
+                </button>
+
+                {/* Scrollable Content */}
+                <div className="overflow-y-auto custom-scrollbar flex-1 min-h-0 -mx-2 px-2 mt-8 md:mt-0">
+
+                <div className="flex flex-col md:flex-row gap-6 md:gap-12">
+                  
+                  {/* Data Pane */}
+                  <div className="flex-1">
+                    <div className={`mb-2 font-mono text-[9px] md:text-[10px] tracking-[0.3em] uppercase ${colorMap[activeProject.color as keyof typeof colorMap].text}`}>
+                      {activeProject.label}
+                    </div>
+                    <h3 className="text-xl md:text-5xl font-bold uppercase tracking-tight text-white mb-3 md:mb-6">
+                      {activeProject.name}
+                    </h3>
+                    
+                    <p className="text-xs md:text-base text-white/70 leading-relaxed mb-4 md:mb-8">
+                      {activeProject.description}
+                    </p>
+
+                    <div className="flex flex-wrap gap-2 mb-6 md:mb-8">
+                      {activeProject.stack.map(s => (
+                        <span key={s} className="border border-white/10 bg-white/[0.05] px-2 md:px-3 py-1 font-mono text-[8px] md:text-[10px] uppercase tracking-[0.2em] text-white/60">
+                          {s}
+                        </span>
+                      ))}
+                    </div>
+
+                    <div className="flex gap-6 font-mono text-[11px] uppercase tracking-widest mt-auto">
+                      <a href={activeProject.live} target="_blank" rel="noopener noreferrer" className={`transition-colors hover:text-white ${colorMap[activeProject.color as keyof typeof colorMap].text}`}>
+                        Execute Live ↗
+                      </a>
+                      <a href={activeProject.code} target="_blank" rel="noopener noreferrer" className="text-white/40 hover:text-white transition-colors">
+                        Source Code ↗
+                      </a>
+                    </div>
+                  </div>
+
+                  {/* Hardware Schema Diagram (Desktop Only) */}
+                  <div className="hidden md:flex w-full md:w-1/3 border border-white/10 bg-[#050505] p-6 flex-col justify-between font-mono">
+                    <div>
+                      <div className="text-[9px] text-white/40 tracking-[0.3em] uppercase border-b border-white/10 pb-2 mb-4">
+                        Hardware Specs
+                      </div>
+                      <div className="text-xs text-white/60 space-y-3">
+                        <div className="flex justify-between"><span>CPU_ID</span> <span className="text-white">{activeProject.cpu}</span></div>
+                        <div className="flex justify-between"><span>TYPE</span> <span className="text-white">{activeProject.type}</span></div>
+                        <div className="flex justify-between"><span>STATUS</span> <span className="text-green-400">ONLINE</span></div>
+                        <div className="flex justify-between"><span>MEM</span> <span className="text-white">OPTIMIZED</span></div>
+                      </div>
+                    </div>
+
+                    {/* Cool animated diagram */}
+                    <div className="mt-8 relative h-24 border border-white/10 bg-[linear-gradient(rgba(255,255,255,0.05)_1px,_transparent_1px),_linear-gradient(90deg,_rgba(255,255,255,0.05)_1px,_transparent_1px)] [background-size:10px_10px]">
+                      <motion.div 
+                        className={`absolute top-1/2 left-1/4 h-8 w-8 -translate-y-1/2 ${colorMap[activeProject.color as keyof typeof colorMap].bg} opacity-20 blur-md`}
+                        animate={{ opacity: [0.2, 0.6, 0.2] }}
+                        transition={{ duration: 2, repeat: Infinity }}
+                      />
+                      <div className={`absolute top-1/2 left-1/4 h-2 w-2 -translate-y-1/2 ${colorMap[activeProject.color as keyof typeof colorMap].bg}`} />
+                      <div className={`absolute top-1/2 left-1/4 w-1/2 h-px -translate-y-1/2 ${colorMap[activeProject.color as keyof typeof colorMap].bg} opacity-50`} />
+                      <div className={`absolute top-1/2 right-1/4 h-4 w-4 -translate-y-1/2 border border-white/40`} />
+                    </div>
+                  </div>
+
+                </div>
+                </div>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+
       </div>
     </section>
   );

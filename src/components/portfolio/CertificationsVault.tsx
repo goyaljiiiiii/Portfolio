@@ -2,6 +2,7 @@
 
 import { AnimatePresence, motion } from "framer-motion";
 import * as React from "react";
+import TextScramble from "./TextScramble";
 
 type CertificationNode = {
   id: string;
@@ -104,7 +105,7 @@ export default function CertificationsVault() {
             </span>
           </div>
           <h2 className="font-mono text-3xl font-light tracking-widest text-white md:text-5xl uppercase">
-            Certifi<span className="text-white/30">cations</span>
+            <TextScramble text="CERTIFICATIONS" />
           </h2>
           <p className="mt-4 font-mono text-xs text-white/40 tracking-widest uppercase">
             [ Select encrypted credential core to decrypt verification token ]
@@ -170,70 +171,71 @@ export default function CertificationsVault() {
             );
           })}
 
-          {/* Decryption Inspection Modal */}
-          <AnimatePresence>
-            {activeCert && (
-              <motion.div
-                initial={{ opacity: 0, scale: 0.9, y: 20 }}
-                animate={{ opacity: 1, scale: 1, y: 0 }}
-                exit={{ opacity: 0, scale: 0.9, y: 20 }}
-                transition={{ type: "spring", stiffness: 300, damping: 25 }}
-                className="fixed inset-0 z-[100] flex items-center justify-center p-4"
-                onClick={() => setActiveId(null)}
+        </div>
+
+        {/* Decryption Inspection Modal (Rendered outside overflow-hidden) */}
+        <AnimatePresence>
+          {activeCert && (
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.9, y: 20 }}
+              transition={{ type: "spring", stiffness: 300, damping: 25 }}
+              className="fixed inset-0 z-[150] flex items-center justify-center p-4"
+              onClick={() => setActiveId(null)}
+            >
+              {/* Backdrop */}
+              <div className="absolute inset-0 bg-black/85 backdrop-blur-md pointer-events-none" />
+
+              <div 
+                className="relative w-full max-w-2xl bg-[#0a0f1a] border border-white/20 p-6 md:p-10 shadow-[0_0_80px_rgba(0,0,0,0.9)] rounded-2xl flex flex-col pointer-events-auto overflow-hidden font-mono"
+                onClick={(e) => e.stopPropagation()}
               >
-                {/* Backdrop */}
-                <div className="absolute inset-0 bg-black/85 backdrop-blur-md pointer-events-none" />
+                <div className={`absolute top-0 left-0 w-full h-1.5 ${colorMap[activeCert.color].bg}`} />
 
-                <div 
-                  className="relative w-full max-w-2xl bg-[#0a0f1a] border border-white/20 p-6 md:p-10 shadow-[0_0_80px_rgba(0,0,0,0.9)] rounded-2xl flex flex-col pointer-events-auto overflow-hidden font-mono"
-                  onClick={(e) => e.stopPropagation()}
+                <button 
+                  onClick={() => setActiveId(null)}
+                  className="absolute top-4 right-4 text-xs text-white/50 hover:text-white uppercase tracking-widest cursor-pointer"
                 >
-                  <div className={`absolute top-0 left-0 w-full h-1.5 ${colorMap[activeCert.color].bg}`} />
+                  [ Close ]
+                </button>
 
-                  <button 
-                    onClick={() => setActiveId(null)}
-                    className="absolute top-4 right-4 text-xs text-white/50 hover:text-white uppercase tracking-widest"
-                  >
-                    [ Close ]
-                  </button>
-
-                  <div className="mb-4">
-                    <span className={`text-[10px] uppercase tracking-widest font-bold ${colorMap[activeCert.color].text}`}>
-                      {activeCert.category} • {activeCert.year}
-                    </span>
-                    <h3 className="text-2xl md:text-3xl font-bold uppercase text-white mt-1">
-                      {activeCert.name}
-                    </h3>
-                    <div className="text-xs text-white/50 mt-1">
-                      Issuer: {activeCert.issuer}
-                    </div>
-                  </div>
-
-                  <div className="bg-black/60 border border-white/10 p-4 rounded-xl text-xs text-white/80 leading-relaxed font-sans mb-6">
-                    <p>{activeCert.details}</p>
-                  </div>
-
-                  <div className="flex flex-col sm:flex-row justify-between items-center gap-4 pt-4 border-t border-white/10 text-xs">
-                    <div className="flex items-center gap-2">
-                      <span className="text-white/40">VERIFY_TOKEN:</span>
-                      <span className={`font-bold ${colorMap[activeCert.color].text}`}>{activeCert.hash}</span>
-                    </div>
-
-                    <a 
-                      href="/assets/Nandini.pdf" 
-                      target="_blank" 
-                      rel="noopener noreferrer"
-                      className="px-6 py-2.5 bg-white text-black font-bold uppercase tracking-widest rounded-full hover:bg-white/90 transition-all text-[11px]"
-                    >
-                      View Resume & Certs ↗
-                    </a>
+                <div className="mb-4">
+                  <span className={`text-[10px] uppercase tracking-widest font-bold ${colorMap[activeCert.color].text}`}>
+                    {activeCert.category} • {activeCert.year}
+                  </span>
+                  <h3 className="text-2xl md:text-3xl font-bold uppercase text-white mt-1">
+                    {activeCert.name}
+                  </h3>
+                  <div className="text-xs text-white/50 mt-1">
+                    Issuer: {activeCert.issuer}
                   </div>
                 </div>
-              </motion.div>
-            )}
-          </AnimatePresence>
 
-        </div>
+                <div className="bg-black/60 border border-white/10 p-4 rounded-xl text-xs text-white/80 leading-relaxed font-sans mb-6">
+                  <p>{activeCert.details}</p>
+                </div>
+
+                <div className="flex flex-col sm:flex-row justify-between items-center gap-4 pt-4 border-t border-white/10 text-xs">
+                  <div className="flex items-center gap-2">
+                    <span className="text-white/40">VERIFY_TOKEN:</span>
+                    <span className={`font-bold ${colorMap[activeCert.color].text}`}>{activeCert.hash}</span>
+                  </div>
+
+                  <a 
+                    href="/assets/Nandini.pdf" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="px-6 py-2.5 bg-white text-black font-bold uppercase tracking-widest rounded-full hover:bg-white/90 transition-all text-[11px]"
+                  >
+                    View Resume & Certs ↗
+                  </a>
+                </div>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+
       </div>
     </section>
   );

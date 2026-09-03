@@ -2,6 +2,7 @@
 
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import * as React from "react";
+import TextScramble from "./TextScramble";
 
 type NavigationNode = {
   id: string;
@@ -141,7 +142,7 @@ function TechStackSection() {
             </span>
           </div>
           <h2 className="font-mono text-3xl font-light tracking-tight text-white md:text-5xl uppercase">
-            Tech <span className="text-white/40">Stack</span>
+            <TextScramble text="TECH STACK" />
           </h2>
         </div>
         <div className="max-w-sm font-mono text-[10px] uppercase leading-5 tracking-widest text-white/40 md:text-right">
@@ -151,10 +152,10 @@ function TechStackSection() {
         </div>
       </div>
 
-      <div className="relative mx-auto h-auto min-h-[400px] py-12 md:py-0 w-full max-w-4xl overflow-hidden rounded-[2rem] border border-white/10 bg-[#050810] shadow-[0_24px_80px_rgba(0,0,0,0.4)] flex flex-wrap content-center justify-center gap-6 md:block">
+      <div className="relative mx-auto h-auto min-h-[480px] py-12 md:py-0 w-full max-w-4xl rounded-[2rem] border border-white/10 bg-[#050810] shadow-[0_24px_80px_rgba(0,0,0,0.4)] flex flex-wrap content-center justify-center gap-6 md:block">
         
         {/* Radar Background */}
-        <div className="pointer-events-none absolute inset-0 opacity-40">
+        <div className="pointer-events-none absolute inset-0 opacity-40 overflow-hidden rounded-[2rem]">
           <div className="absolute left-1/2 top-1/2 h-[800px] w-[800px] -translate-x-1/2 -translate-y-1/2 rounded-full border border-white/5 bg-[radial-gradient(circle_at_center,_transparent_60%,_rgba(255,255,255,0.02)_100%)]" />
           <div className="absolute left-1/2 top-1/2 h-[500px] w-[500px] -translate-x-1/2 -translate-y-1/2 rounded-full border border-white/5" />
           <div className="absolute left-1/2 top-1/2 h-[200px] w-[200px] -translate-x-1/2 -translate-y-1/2 rounded-full border border-white/5" />
@@ -183,7 +184,7 @@ function TechStackSection() {
           return (
             <div
               key={node.id}
-              className={`relative md:absolute group cursor-default tech-node-${node.id}`}
+              className={`relative md:absolute group cursor-default z-30 tech-node-${node.id}`}
               style={{
                 ...(typeof window !== 'undefined' && window.innerWidth >= 768 ? { transform: "translate(-50%, -50%)" } : {}),
                 "--desk-x": `${node.coords.deskX}%`,
@@ -203,12 +204,17 @@ function TechStackSection() {
                 transition={{ duration: 0.6, delay: i * 0.05 }}
               >
                 <motion.div
-                  className="relative flex flex-col items-center justify-center gap-1"
+                  className="relative flex flex-col items-center justify-center"
                   animate={reduceMotion ? undefined : { y: [0, -6, 0] }}
                   transition={{ duration: 4 + (i % 3), repeat: Infinity, ease: "easeInOut" }}
                 >
+                  {/* System tag (hidden until hover) */}
+                  <div className={`absolute -top-7 whitespace-nowrap rounded bg-[#070b14] px-2 py-0.5 font-mono text-[9px] font-bold border z-40 transition-all duration-200 pointer-events-none ${isActive ? 'opacity-100 scale-100' : 'opacity-0 scale-90'} ${accentClassesMap[node.accent].text} ${accentClassesMap[node.accent].ring}`}>
+                    [{node.sys}]
+                  </div>
+
                   {/* Tech Icon Container */}
-                  <div className={`relative flex h-10 w-10 md:h-12 md:w-12 items-center justify-center rounded-full border border-white/10 bg-[#070b14]/90 backdrop-blur-md transition-all duration-300 ${isActive ? 'scale-110 shadow-[0_0_20px_rgba(255,255,255,0.1)] ' + accentClassesMap[node.accent].ring : 'hover:border-white/30'}`}>
+                  <div className={`relative flex h-10 w-10 md:h-12 md:w-12 items-center justify-center rounded-full border border-white/10 bg-[#070b14]/95 backdrop-blur-md transition-all duration-300 ${isActive ? 'scale-110 shadow-[0_0_25px_rgba(255,255,255,0.15)] ' + accentClassesMap[node.accent].ring : 'hover:border-white/40'}`}>
                     {isActive && (
                       <span className={`absolute inline-flex h-full w-full animate-ping rounded-full opacity-25 ${accentClassesMap[node.accent].bg}`} />
                     )}
@@ -219,18 +225,16 @@ function TechStackSection() {
                       className={`h-5 w-5 md:h-6 md:w-6 transition-opacity duration-300 ${isActive ? 'opacity-100' : 'opacity-60'}`}
                       src={`https://cdn.simpleicons.org/${node.icon}/ffffff`}
                     />
-                    {/* System tag (hidden until hover) */}
-                    <div className={`absolute -top-8 md:-top-10 whitespace-nowrap rounded bg-[#070b14]/95 px-1.5 py-0.5 font-mono text-[9px] font-bold border transition-opacity duration-300 ${isActive ? 'opacity-100' : 'opacity-0'} ${accentClassesMap[node.accent].text} ${accentClassesMap[node.accent].ring}`}>
-                      [{node.sys}]
+                  </div>
+
+                  {/* Name & Coordinate Label Container (Stacked neatly below) */}
+                  <div className="mt-1.5 flex flex-col items-center gap-0.5">
+                    <div className={`font-mono text-[10px] tracking-[0.15em] font-bold transition-all duration-300 px-2 py-0.5 rounded backdrop-blur-md bg-[#070b14]/90 border ${isActive ? 'text-white border-white/30 shadow-[0_0_12px_rgba(255,255,255,0.1)]' : 'text-white/50 border-transparent group-hover:text-white/80'}`}>
+                      {node.name}
                     </div>
-                    {/* Coordinate tag */}
-                    <div className={`absolute -bottom-5 whitespace-nowrap font-mono text-[8px] tracking-widest transition-colors duration-300 ${isActive ? 'text-white/80' : 'text-white/30'}`}>
+                    <div className={`font-mono text-[8px] tracking-widest transition-colors duration-300 ${isActive ? accentClassesMap[node.accent].text : 'text-white/30'}`}>
                       LAT:{node.coords.deskX}.{node.coords.deskY}
                     </div>
-                  </div>
-                  {/* Name Label */}
-                  <div className={`mt-2 font-mono text-[10px] tracking-[0.2em] font-bold transition-colors duration-300 px-2 py-0.5 rounded backdrop-blur-md bg-[#070b14]/80 border ${isActive ? 'text-white border-white/20' : 'text-white/40 border-transparent'}`}>
-                    {node.name}
                   </div>
                 </motion.div>
               </motion.div>
@@ -276,7 +280,7 @@ function ExperienceSection() {
             </span>
           </div>
           <h2 className="font-mono text-3xl font-light tracking-widest text-white md:text-5xl uppercase">
-            Exper<span className="text-white/30">ience</span>
+            <TextScramble text="EXPERIENCE" />
           </h2>
           <p className="mt-4 font-mono text-xs text-white/40 tracking-widest uppercase">
             [ Select a stellar node to extract data ]
@@ -352,19 +356,21 @@ function ExperienceSection() {
              )
           })}
 
-          {/* Data HUD Overlay (Centered) */}
-          <AnimatePresence mode="wait">
-            {activeShard && (
-              <motion.div
-                key={activeShard.id}
-                initial={{ opacity: 0, scale: 0.95, filter: "blur(10px)" }}
-                animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
-                exit={{ opacity: 0, scale: 0.95, filter: "blur(10px)" }}
-                transition={{ duration: 0.4 }}
-                className="fixed inset-0 z-[100] flex items-center justify-center p-4 md:p-6"
-                onClick={() => setActiveId(null)}
-              >
-                {/* Blur backdrop for the HUD specifically */}
+        </div>
+
+        {/* Data HUD Overlay (Rendered outside overflow-hidden) */}
+        <AnimatePresence mode="wait">
+          {activeShard && (
+            <motion.div
+              key={activeShard.id}
+              initial={{ opacity: 0, scale: 0.95, filter: "blur(10px)" }}
+              animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
+              exit={{ opacity: 0, scale: 0.95, filter: "blur(10px)" }}
+              transition={{ duration: 0.3 }}
+              className="fixed inset-0 z-[150] flex items-center justify-center p-4 md:p-6"
+              onClick={() => setActiveId(null)}
+            >
+              {/* Blur backdrop for the HUD specifically */}
               <div className="absolute inset-0 bg-black/80 backdrop-blur-md pointer-events-none" />
               
               <div 
@@ -373,7 +379,7 @@ function ExperienceSection() {
               >
                 
                 {/* Holographic Frame Base */}
-                <div className={`absolute inset-0 rounded-[1.5rem] bg-[#050810]/80 backdrop-blur-2xl border border-white/10 overflow-hidden`}>
+                <div className={`absolute inset-0 rounded-[1.5rem] bg-[#050810]/95 backdrop-blur-2xl border border-white/20 overflow-hidden`}>
                   <div className={`absolute inset-0 opacity-[0.03] bg-gradient-to-b from-transparent to-current ${accentClassesMap[activeShard.color].text}`} />
                 </div>
                 
@@ -382,7 +388,7 @@ function ExperienceSection() {
                 <div className={`absolute bottom-0 right-8 w-16 h-[2px] ${accentClassesMap[activeShard.color].bg}`} />
 
                 {/* Fixed Close Button */}
-                <button onClick={() => setActiveId(null)} className="absolute top-5 right-5 z-20 font-mono text-[10px] uppercase tracking-widest text-white/50 hover:text-white transition-colors">
+                <button onClick={() => setActiveId(null)} className="absolute top-5 right-5 z-20 font-mono text-[10px] uppercase tracking-widest text-white/50 hover:text-white transition-colors cursor-pointer">
                   [ CLOSE ]
                 </button>
 
@@ -420,11 +426,10 @@ function ExperienceSection() {
                   </div>
                 </div>
               </div>
-              </motion.div>
-            )}
-          </AnimatePresence>
+            </motion.div>
+          )}
+        </AnimatePresence>
 
-        </div>
       </div>
     </section>
   );

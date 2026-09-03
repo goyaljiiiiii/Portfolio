@@ -2,9 +2,10 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
-import * as React from "react";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import CursorAndEffects from "./CursorAndEffects";
+import TextScramble from "./TextScramble";
+import MagneticButton from "./MagneticButton";
 
 export default function Hero() {
   const [latestEvent, setLatestEvent] = useState<{ type: string; repo: string; time: string } | null>(null);
@@ -47,7 +48,7 @@ export default function Hero() {
       >
         <div className="relative mx-auto w-full max-w-6xl z-10 flex flex-col items-center justify-center min-h-[500px] mt-16 md:mt-0">
           
-          {/* Main Title Background Text */}
+          {/* Main Title Background Text with Cyber Scramble */}
           <motion.div
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -55,7 +56,7 @@ export default function Hero() {
             className="absolute top-[-60px] md:top-[-40px] left-0 right-0 flex justify-between items-start z-20 pointer-events-none"
           >
             <h1 className="text-[clamp(3.5rem,12vw,9rem)] font-bold tracking-tighter uppercase text-white/5 leading-none">
-              Nandini
+              <TextScramble text="NANDINI" />
             </h1>
             <div className="hidden md:block text-right font-mono text-[10px] tracking-[0.3em] uppercase text-white/30 mt-8">
               [ 01 ] Portfolio <br/> Architecture
@@ -80,28 +81,44 @@ export default function Hero() {
             </motion.div>
           )}
 
-          {/* Central Portrait */}
+          {/* Central Portrait with Holographic Cyber Scanner & Laser Sweep */}
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 1, ease: "easeOut", delay: 0.2 }}
-            className="relative w-[280px] h-[380px] md:w-[450px] md:h-[580px] rounded-sm z-10 shadow-[0_30px_100px_rgba(0,0,0,0.8)] border border-white/5 group"
+            whileHover={{ scale: 1.025 }}
+            transition={{ duration: 0.5, ease: "easeOut" }}
+            className="relative w-[280px] h-[380px] md:w-[450px] md:h-[580px] rounded-md z-10 shadow-[0_30px_100px_rgba(0,0,0,0.8)] border border-white/10 hover:border-cyan-400/60 hover:shadow-[0_0_60px_rgba(34,211,238,0.35)] group overflow-hidden transition-all duration-500"
           >
-            <div className="absolute inset-0 rounded-sm overflow-hidden">
+            <div className="absolute inset-0 rounded-md overflow-hidden">
               <Image
                 src="/assets/picture.jpeg"
                 alt="Nandini Profile"
                 fill
-                className="object-cover object-center grayscale group-hover:grayscale-0 group-hover:scale-[1.02] transition-all duration-700"
+                className="object-cover object-center grayscale group-hover:grayscale-0 group-hover:scale-[1.04] transition-all duration-700"
                 priority
               />
-              {/* Inner frame subtle gradient */}
-              <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#050505]/90 pointer-events-none" />
+              
+              {/* Cyber Glitch Scanline Sheen */}
+              <div className="absolute inset-0 bg-gradient-to-b from-cyan-500/20 via-transparent to-[#050505]/90 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              <div className="absolute inset-0 bg-[linear-gradient(to_bottom,_transparent_50%,_rgba(0,255,255,0.08)_51%)] [background-size:100%_4px] pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity" />
+
+              {/* Scanning Cyber Laser Line (Moving up and down) */}
+              <motion.div 
+                className="absolute left-0 right-0 h-[2px] bg-cyan-400 shadow-[0_0_20px_#22d3ee] z-20 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                animate={{ top: ["0%", "100%", "0%"] }}
+                transition={{ duration: 2.5, repeat: Infinity, ease: "linear" }}
+              />
+
+              {/* HUD Corner Brackets */}
+              <div className="absolute top-3 left-3 w-4 h-4 border-t-2 border-l-2 border-cyan-400/40 group-hover:border-cyan-400 transition-colors z-20 pointer-events-none" />
+              <div className="absolute top-3 right-3 w-4 h-4 border-t-2 border-r-2 border-cyan-400/40 group-hover:border-cyan-400 transition-colors z-20 pointer-events-none" />
+              <div className="absolute bottom-16 left-3 w-4 h-4 border-b-2 border-l-2 border-cyan-400/40 group-hover:border-cyan-400 transition-colors z-20 pointer-events-none" />
+              <div className="absolute bottom-16 right-3 w-4 h-4 border-b-2 border-r-2 border-cyan-400/40 group-hover:border-cyan-400 transition-colors z-20 pointer-events-none" />
             </div>
             
             {/* Lower minimal links embedded in the photo frame */}
             <div className="absolute bottom-6 left-6 right-6 flex justify-between items-end border-t border-white/20 pt-4 z-20">
-              <motion.a drag dragConstraints={containerRef} whileDrag={{ scale: 1.1, zIndex: 50 }} href="#connect" className="text-white hover:text-white/70 transition-colors font-serif italic text-base md:text-xl relative z-30 cursor-grab active:cursor-grabbing">
+              <motion.a drag dragConstraints={containerRef} whileDrag={{ scale: 1.1, zIndex: 50 }} href="#connect" className="text-white hover:text-cyan-300 transition-colors font-serif italic text-base md:text-xl relative z-30 cursor-grab active:cursor-grabbing">
                 Say Hello ↘
               </motion.a>
               <motion.a drag dragConstraints={containerRef} whileDrag={{ scale: 1.1, zIndex: 50 }} href="/assets/Nandini.pdf" target="_blank" rel="noopener noreferrer" className="font-mono text-[9px] uppercase tracking-widest text-white/50 hover:text-white transition-colors relative z-30 cursor-grab active:cursor-grabbing">
@@ -110,7 +127,7 @@ export default function Hero() {
             </div>
           </motion.div>
 
-          {/* Terminal Access Hint & Mobile Button */}
+          {/* Terminal Access Hint with Magnetic Gravity Pull */}
           <motion.div 
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -118,19 +135,18 @@ export default function Hero() {
             className="absolute top-[85%] md:top-[88%] left-1/2 -translate-x-1/2 flex flex-col items-center gap-3 z-30 w-full text-center"
           >
             <div className="flex gap-4">
-              <motion.button 
-                drag
-                dragConstraints={containerRef}
-                whileDrag={{ scale: 1.1, zIndex: 50 }}
-                className="px-6 py-2.5 bg-black/80 border border-green-500/50 text-green-500 font-mono text-[10px] md:text-xs rounded-full shadow-[0_0_15px_rgba(0,255,0,0.2)] hover:bg-green-500/10 hover:shadow-[0_0_25px_rgba(0,255,0,0.4)] uppercase tracking-widest active:scale-95 transition-all cursor-grab active:cursor-grabbing"
-                onClick={() => window.dispatchEvent(new Event('open-terminal'))}
-              >
-                [ Open Terminal ]
-              </motion.button>
+              <MagneticButton>
+                <button 
+                  className="px-6 py-2.5 bg-black/80 border border-green-500/50 text-green-500 font-mono text-[10px] md:text-xs rounded-full shadow-[0_0_15px_rgba(0,255,0,0.2)] hover:bg-green-500/10 hover:shadow-[0_0_25px_rgba(0,255,0,0.4)] uppercase tracking-widest active:scale-95 transition-all cursor-pointer"
+                  onClick={() => window.dispatchEvent(new Event('open-terminal'))}
+                >
+                  [ Open Terminal ]
+                </button>
+              </MagneticButton>
             </div>
-            <motion.div drag dragConstraints={containerRef} whileDrag={{ scale: 1.1, zIndex: 50 }} className="text-[9px] md:text-[10px] font-mono text-green-500/50 uppercase tracking-[0.2em] animate-pulse cursor-grab active:cursor-grabbing">
+            <div className="text-[9px] md:text-[10px] font-mono text-green-500/50 uppercase tracking-[0.2em] animate-pulse">
               {"// Or type 'hack' / 'matrix'"}
-            </motion.div>
+            </div>
           </motion.div>
 
           {/* Floating Impact Blocks */}

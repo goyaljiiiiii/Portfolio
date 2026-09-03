@@ -2,6 +2,7 @@
 
 import { motion, AnimatePresence } from "framer-motion";
 import * as React from "react";
+import TextScramble from "./TextScramble";
 
 type Milestone = {
   id: string;
@@ -80,7 +81,7 @@ export default function Education() {
             </span>
           </div>
           <h2 className="font-mono text-3xl font-light tracking-widest text-white md:text-5xl uppercase">
-            Edu<span className="text-white/30">cation</span>
+            <TextScramble text="EDUCATION" />
           </h2>
           <p className="mt-4 font-mono text-xs text-white/40 tracking-widest uppercase">
             [ Accessing core memory banks ]

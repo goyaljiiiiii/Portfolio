@@ -53,13 +53,14 @@ type DataShard = {
 };
 
 const dataShards: DataShard[] = [
-  { id: "cdn", org: "CDN IGNOU", title: "Founder & Technical Lead", tag: "COMMUNITY", signal: "Started and shaped a student community around support, technical learning, and shared opportunity.", impact: "Built spaces where IGNOU learners can ask, build, and grow together.", width: "w-[85%] md:w-[60%]", align: "center", color: "cyan" },
-  { id: "ssoc", org: "SSOC / GSSOC / Apertre", title: "Open Source Project Admin", tag: "OPEN SOURCE", signal: "Helped contributors find direction, understand projects, and move from confusion to contribution.", impact: "Project guidance, contribution reviews, and community support.", width: "w-[75%] md:w-[50%]", align: "flex-start", color: "emerald" },
-  { id: "bob", org: "Self Taught Bob", title: "Content Creator & Mentor", tag: "MENTORSHIP", signal: "Turned self-learning into public notes, guidance, and beginner-friendly technical content.", impact: "Mentoring through practical explanations and visible learning.", width: "w-[65%] md:w-[45%]", align: "flex-end", color: "fuchsia" },
-  { id: "gfg", org: "GeeksforGeeks", title: "Campus Ambassador", tag: "CAMPUS", signal: "Connected students with coding culture, learning resources, and technical events.", impact: "Helped learning feel more reachable on campus.", width: "w-[70%] md:w-[50%]", align: "flex-start", color: "indigo" },
-  { id: "w2h", org: "Work2Hire", title: "Program Manager Lead", tag: "LEADERSHIP", signal: "Managed student ambassador workflows, coordination, and outreach systems.", impact: "Led people, deadlines, and communication loops.", width: "w-[80%] md:w-[55%]", align: "flex-end", color: "emerald" },
-  { id: "osc", org: "Open Source Connect", title: "Host & Management Lead", tag: "EVENTS", signal: "Hosted and managed sessions where developers, students, and contributors could meet and learn.", impact: "Event flow, speaker coordination, and community energy.", width: "w-[60%] md:w-[40%]", align: "flex-start", color: "cyan" },
-  { id: "algo", org: "AlgoAcquisition", title: "Sales Dev Representative", tag: "BUSINESS", signal: "Worked on outreach, conversations, qualification, and the human side of growth.", impact: "Sharper communication and practical business context.", width: "w-[85%] md:w-[65%]", align: "flex-end", color: "fuchsia" }
+  { id: "algo", org: "algoacquisition", title: "Sales Development Representative", tag: "AI & B2B OUTBOUND", signal: "Building AI systems that agentically scrape the live web for buying signals (hiring velocity, job posts, expansion), map decision makers, and launch hyper-personalized outreach.", impact: "Achieved 3-4x response rates, generating predictable B2B sales pipelines.", width: "w-[85%] md:w-[65%]", align: "flex-end", color: "cyan" },
+  { id: "w2h", org: "Work2Hire", title: "Campus Ambassador Program Manager Lead", tag: "LEADERSHIP", signal: "Driving student community engagement and scaling the Campus Ambassador Program across colleges & universities.", impact: "Recruited & managed ambassadors across diverse institutions, run outreach campaigns & webinars.", width: "w-[80%] md:w-[55%]", align: "flex-start", color: "emerald" },
+  { id: "ssoc", org: "Social Summer of Code '26", title: "Open Source Project Admin", tag: "OPEN SOURCE", signal: "Project Admin for SSOC '26. Leading projects, reviewing pull requests, and mentoring multi-developer teams.", impact: "Guiding new open source developers from first issue to production code.", width: "w-[75%] md:w-[50%]", align: "flex-end", color: "fuchsia" },
+  { id: "bob", org: "Self Taught Bob", title: "Content Creator & Mentor (YouTube)", tag: "MENTORSHIP", signal: "Sharing self-taught coding journey from 0, producing developer guides, roadmaps, and 1-on-1 mentorship.", impact: "Helped student developers build projects and navigate software paths.", width: "w-[65%] md:w-[45%]", align: "flex-start", color: "indigo" },
+  { id: "cdn", org: "CDN IGNOU", title: "Founder & Technical Lead", tag: "COMMUNITY", signal: "Founded and lead CDN IGNOU community. Organizing tech events, workshops, and hackathons via Commudle.", impact: "Created a collaborative learning ecosystem for IGNOU tech students.", width: "w-[85%] md:w-[60%]", align: "center", color: "cyan" },
+  { id: "apertre", org: "Apertre 3.0", title: "Open Source Developer (Top 25)", tag: "CONTRIBUTOR", signal: "Contributed to open-source codebases during Apertre 3.0 mentorship, resolving issues and building features.", impact: "Ranked in Top 25 contributors nationwide.", width: "w-[70%] md:w-[50%]", align: "flex-end", color: "emerald" },
+  { id: "gfg", org: "GeeksforGeeks", title: "Campus Ambassador", tag: "CAMPUS", signal: "Represented GeeksforGeeks on campus, connecting students with programming challenges and resources.", impact: "Expanded coding awareness and technical event participation.", width: "w-[70%] md:w-[50%]", align: "flex-start", color: "indigo" },
+  { id: "osc", org: "Open Source Connect", title: "Host & Management Lead", tag: "EVENTS", signal: "Hosted online meetups, delivered tech talks, and facilitated developer networking sessions.", impact: "Streamlined event flow and speaker logistics for high community engagement.", width: "w-[60%] md:w-[40%]", align: "flex-start", color: "fuchsia" }
 ];
 
 type RecoveredRecord = {
@@ -74,43 +75,43 @@ type RecoveredRecord = {
 const recoveredRecords: RecoveredRecord[] = [
   {
     id: "rec-01",
-    title: "2nd Place IoT Hackathon",
-    detail: "AutoBotX placed second, a hands-on build that blended hardware thinking with software execution. Recovered logs indicate high sensor integration.",
-    dateStr: "REC-2023",
-    classification: "LEVEL 2",
-    position: { top: "15%", left: "10%", rotate: -6, zIndex: 1 }
+    title: "Hackathon Winner: AutoBotX",
+    detail: "Placed 2nd in National IoT Hackathon with AutoBotX. Blended hardware sensors with a Python orchestration backend.",
+    dateStr: "AWARD-2026",
+    classification: "WINNER",
+    position: { top: "12%", left: "8%", rotate: -6, zIndex: 1 }
   },
   {
     id: "rec-02",
-    title: "Top 25 Apertre Contributor",
-    detail: "Recognized among the top contributors in Apertre 3.0. Significant code contributions documented in open networks.",
-    dateStr: "REC-2024",
-    classification: "UNRESTRICTED",
-    position: { top: "45%", left: "25%", rotate: 8, zIndex: 2 }
+    title: "Open Source Connect Global 2026",
+    detail: "Official Certificate of Participation awarded for contributions and leadership in Open Source Connect Global 2026.",
+    dateStr: "CERT-2026",
+    classification: "CERTIFIED",
+    position: { top: "42%", left: "22%", rotate: 8, zIndex: 2 }
   },
   {
     id: "rec-03",
-    title: "AutoAlign Recognition",
-    detail: "AutoAlign received recognition on Commudle. System optimization logs have been fully recovered and cataloged.",
-    dateStr: "REC-2024",
-    classification: "LEVEL 1",
-    position: { top: "25%", left: "55%", rotate: -4, zIndex: 3 }
+    title: "Top 25 Apertre 3.0 Contributor",
+    detail: "Recognized among Top 25 national contributors in Apertre 3.0 open source mentorship program.",
+    dateStr: "HONOR-2026",
+    classification: "TOP 25",
+    position: { top: "22%", left: "52%", rotate: -4, zIndex: 3 }
   },
   {
     id: "rec-04",
-    title: "Technical Event Organization",
-    detail: "Organized hackathons, workshops, and HackDay-style sessions for student builders. Comm chatter verified high attendance.",
-    dateStr: "REC-2023",
-    classification: "PUBLIC",
-    position: { top: "60%", left: "65%", rotate: 12, zIndex: 4 }
+    title: "Angular Meets Generative AI",
+    detail: "Certified in 'Beyond the Browser: Angular Meets Generative AI' - exploring AI integration with modern web architecture.",
+    dateStr: "CERT-2026",
+    classification: "GEN-AI",
+    position: { top: "58%", left: "62%", rotate: 10, zIndex: 4 }
   },
   {
     id: "rec-05",
-    title: "Open Source Contributions",
-    detail: "Contributed across multiple projects while learning in public. Distributed network patches traced back to core ID.",
-    dateStr: "REC-2022",
-    classification: "UNRESTRICTED",
-    position: { top: "75%", left: "15%", rotate: -10, zIndex: 5 }
+    title: "Office Automation Certificate",
+    detail: "Certificate of Participation in Pre-Assessment round of Open Source Hackathon & Office Automation.",
+    dateStr: "CERT-2026",
+    classification: "AUTOMATION",
+    position: { top: "72%", left: "14%", rotate: -8, zIndex: 5 }
   },
 ];
 

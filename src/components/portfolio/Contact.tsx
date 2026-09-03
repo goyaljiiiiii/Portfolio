@@ -46,10 +46,13 @@ export default function Contact() {
             </h2>
 
             <p className="text-lg md:text-xl text-white/60 font-light leading-relaxed mb-16 max-w-md">
-              Whether you have a project in mind, want to discuss an opportunity, or just want to say hi—my inbox is always open.
+              Whether you have an outbound system project, community opportunity, open source collaboration, or just want to say hi—reach out at <a href="mailto:nandunandinigoyal@gmail.com" className="text-cyan-400 underline">nandunandinigoyal@gmail.com</a> or send a message below.
             </p>
 
-            <div className="flex flex-wrap gap-8 text-sm font-medium mt-auto">
+            <div className="flex flex-wrap gap-6 text-sm font-medium mt-auto">
+              <a href="mailto:nandunandinigoyal@gmail.com" className="flex items-center gap-2 text-white/60 hover:text-white transition-colors pb-1 border-b border-white/10 hover:border-white">
+                Email <span className="text-white/30 font-serif">✉</span>
+              </a>
               <a href="https://github.com/nandinigoyaldev" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-white/60 hover:text-white transition-colors pb-1 border-b border-white/10 hover:border-white">
                 GitHub <span className="text-white/30 font-serif">↗</span>
               </a>

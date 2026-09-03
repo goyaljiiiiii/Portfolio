@@ -22,7 +22,7 @@ const MOCK_REPOSITORIES: GitHubRepository[] = [
   {
     name: "AutoBotX",
     description: "An award-winning IoT system blending hardware control and software execution. Placed 2nd in the National IoT Hackathon.",
-    html_url: "https://github.com/goyaljiiiiii/AutoBotX",
+    html_url: "https://github.com/nandinigoyaldev/AutoBotX",
     language: "C++",
     languages: ["C++", "Python", "HTML"],
     readme: "# AutoBotX\n\nAutoBotX is an autonomous IoT system designed to orchestrate sensory feedback and machine actions in real-time. This project placed second in the IoT Hackathon, demonstrating robustness across hardware-software lines.\n\n## Features\n- Direct hardware sensory loops\n- Python orchestration server\n- Real-time diagnostics panel",
@@ -33,7 +33,7 @@ const MOCK_REPOSITORIES: GitHubRepository[] = [
   {
     name: "AutoAlign",
     description: "A utility tool for automated alignment and visual component mapping, recognized on Commudle.",
-    html_url: "https://github.com/goyaljiiiiii/AutoAlign",
+    html_url: "https://github.com/nandinigoyaldev/AutoAlign",
     language: "TypeScript",
     languages: ["TypeScript", "React", "CSS"],
     readme: "# AutoAlign\n\nAutoAlign simplifies spatial alignment calculations for design models and interactive layouts. Recognized on Commudle for its ease-of-use and clear developer utility.",
@@ -44,7 +44,7 @@ const MOCK_REPOSITORIES: GitHubRepository[] = [
   {
     name: "portfolio",
     description: "Personal portfolio built with Next.js 16, Tailwind CSS v4, and Framer Motion.",
-    html_url: "https://github.com/goyaljiiiiii/portfolio",
+    html_url: "https://github.com/nandinigoyaldev/portfolio",
     language: "TypeScript",
     languages: ["TypeScript", "Next.js", "Tailwind CSS"],
     readme: "# Personal Portfolio\n\nThis is my interactive digital twin portfolio showcasing projects, education, and communities.",
@@ -87,7 +87,7 @@ export function saveCachedRepositories(repos: GitHubRepository[]): void {
  * Fetches repositories and details dynamically from the GitHub API.
  * Designed for on-demand sync triggers or cron schedules.
  */
-export async function syncGitHubData(username: string = "goyaljiiiiii"): Promise<GitHubRepository[]> {
+export async function syncGitHubData(username: string = "nandinigoyaldev"): Promise<GitHubRepository[]> {
   try {
     // 1. Fetch repos list
     const reposRes = await fetch(`https://api.github.com/users/${username}/repos?sort=updated&per_page=10`, {

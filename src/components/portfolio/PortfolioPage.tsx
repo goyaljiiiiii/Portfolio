@@ -14,6 +14,11 @@ import AmbientSnake from "./AmbientSnake";
 import CometShower from "./CometShower";
 import Terminal from "./Terminal";
 
+import About from "./About";
+import SignalScanner from "./SignalScanner";
+import YouTubeHub from "./YouTubeHub";
+import CommandPalette from "./CommandPalette";
+
 export default function PortfolioPage() {
   // Keeps parity with the original HTML behavior:
   // - intersection-reveal for headings/paragraphs
@@ -52,7 +57,10 @@ export default function PortfolioPage() {
       <Navbar />
       <main>
         <Hero />
+        <About />
         <Skills />
+        <SignalScanner />
+        <YouTubeHub />
         <Education />
         <Projects />
         <Contact />
@@ -65,6 +73,7 @@ export default function PortfolioPage() {
       </div>
       <ChatWidget />
       <Terminal />
+      <CommandPalette />
     </div>
   );
 }

@@ -135,7 +135,7 @@ export default function Hero() {
 
           {/* Floating Impact Blocks */}
           
-          {/* 1. Software Development */}
+          {/* 1. AI Outbound Systems */}
           <motion.div
             drag
             dragConstraints={containerRef}
@@ -145,17 +145,18 @@ export default function Hero() {
             initial={{ opacity: 0, x: -30 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="absolute top-[8%] md:top-[18%] left-0 md:left-[5%] z-20 md:max-w-[220px] cursor-grab active:cursor-grabbing touch-none"
+            className="absolute top-[8%] md:top-[18%] left-0 md:left-[5%] z-20 md:max-w-[240px] cursor-grab active:cursor-grabbing touch-none"
           >
-            <div className="font-mono text-[9px] text-white/40 mb-1 md:mb-2 tracking-widest uppercase flex items-center gap-2">
-              <span className="w-4 h-px bg-white/40"></span> Action 01
+            <div className="font-mono text-[9px] text-cyan-400 mb-1 md:mb-2 tracking-widest uppercase flex items-center gap-2">
+              <span className="w-4 h-px bg-cyan-400"></span> Action 01
             </div>
             <h2 className="text-[clamp(1.1rem,3vw,1.875rem)] font-bold uppercase tracking-tight leading-none mix-blend-difference text-white">
-              Software<br/>Development
+              AI Outbound<br/>Systems SDR
             </h2>
+            <div className="text-cyan-400/80 text-[9px] md:text-[10px] mt-2 md:mt-3 font-mono uppercase tracking-[0.2em]">SDR @ algoacquisition</div>
           </motion.div>
 
-          {/* 2. Community Building */}
+          {/* 2. Program Management */}
           <motion.div
             drag
             dragConstraints={containerRef}
@@ -165,15 +166,15 @@ export default function Hero() {
             initial={{ opacity: 0, x: 30 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.5 }}
-            className="absolute top-[28%] md:top-[15%] right-0 md:right-[5%] text-right z-20 md:max-w-[220px] cursor-grab active:cursor-grabbing touch-none"
+            className="absolute top-[28%] md:top-[15%] right-0 md:right-[5%] text-right z-20 md:max-w-[240px] cursor-grab active:cursor-grabbing touch-none"
           >
-            <div className="font-mono text-[9px] text-white/40 mb-1 md:mb-2 tracking-widest uppercase flex items-center justify-end gap-2">
-              Action 02 <span className="w-4 h-px bg-white/40"></span>
+            <div className="font-mono text-[9px] text-emerald-400 mb-1 md:mb-2 tracking-widest uppercase flex items-center justify-end gap-2">
+              Action 02 <span className="w-4 h-px bg-emerald-400"></span>
             </div>
             <h2 className="text-[clamp(1.1rem,3vw,1.875rem)] font-bold uppercase tracking-tight leading-none mix-blend-difference text-white">
-              Community<br/>Building
+              Program<br/>Management
             </h2>
-            <div className="text-white/60 text-[9px] md:text-[10px] mt-2 md:mt-3 font-mono uppercase tracking-[0.2em]">Founder @ CDN IGNOU</div>
+            <div className="text-emerald-400/80 text-[9px] md:text-[10px] mt-2 md:mt-3 font-mono uppercase tracking-[0.2em]">Lead @ Work2Hire & CDN IGNOU</div>
           </motion.div>
 
           {/* 3. Open Source */}
@@ -188,13 +189,13 @@ export default function Hero() {
             transition={{ duration: 0.8, delay: 0.6 }}
             className="absolute bottom-[22%] md:bottom-[25%] left-0 md:left-[2%] z-20 md:max-w-[250px] cursor-grab active:cursor-grabbing touch-none"
           >
-            <div className="font-mono text-[9px] text-white/40 mb-1 md:mb-2 tracking-widest uppercase flex items-center gap-2">
-              <span className="w-4 h-px bg-white/40"></span> Action 03
+            <div className="font-mono text-[9px] text-fuchsia-400 mb-1 md:mb-2 tracking-widest uppercase flex items-center gap-2">
+              <span className="w-4 h-px bg-fuchsia-400"></span> Action 03
             </div>
             <h2 className="text-[clamp(1.1rem,3vw,1.875rem)] font-bold uppercase tracking-tight leading-none mix-blend-difference text-white">
-              Open Source<br/>Contributions
+              Open Source<br/>Project Admin
             </h2>
-            <div className="text-white/60 text-[9px] md:text-[10px] mt-2 md:mt-3 font-mono uppercase tracking-[0.2em]">Top 25 @ Apertre</div>
+            <div className="text-fuchsia-400/80 text-[9px] md:text-[10px] mt-2 md:mt-3 font-mono uppercase tracking-[0.2em]">Admin @ SSOC '26 & Top 25 Apertre</div>
           </motion.div>
 
           {/* 4. Mentoring & Content */}
@@ -209,13 +210,13 @@ export default function Hero() {
             transition={{ duration: 0.8, delay: 0.7 }}
             className="absolute bottom-[8%] md:bottom-[15%] right-0 md:right-[8%] text-right z-20 md:max-w-[220px] cursor-grab active:cursor-grabbing touch-none"
           >
-            <div className="font-mono text-[9px] text-white/40 mb-1 md:mb-2 tracking-widest uppercase flex items-center justify-end gap-2">
-              Action 04 <span className="w-4 h-px bg-white/40"></span>
+            <div className="font-mono text-[9px] text-yellow-400 mb-1 md:mb-2 tracking-widest uppercase flex items-center justify-end gap-2">
+              Action 04 <span className="w-4 h-px bg-yellow-400"></span>
             </div>
             <h2 className="text-[clamp(1.1rem,3vw,1.875rem)] font-bold uppercase tracking-tight leading-none mix-blend-difference text-white">
               Mentoring &<br/>Content
             </h2>
-            <div className="text-white/60 text-[9px] md:text-[10px] mt-2 md:mt-3 font-mono uppercase tracking-[0.2em]">Creator @ Self Taught Bob</div>
+            <div className="text-yellow-400/80 text-[9px] md:text-[10px] mt-2 md:mt-3 font-mono uppercase tracking-[0.2em]">Creator @ Self Taught Bob</div>
           </motion.div>
 
         </div>

@@ -12,8 +12,8 @@ const projects = [
     description:
       "Autonomous IoT system blending hardware control and software execution. It placed 2nd in a National IoT Hackathon and shows deep hardware-software problem solving and real-time data processing.",
     stack: ["C++", "Python", "HTML", "IoT"],
-    live: "https://github.com/goyaljiiiiii/AutoBotX",
-    code: "https://github.com/goyaljiiiiii/AutoBotX",
+    live: "https://github.com/nandinigoyaldev/AutoBotX",
+    code: "https://github.com/nandinigoyaldev/AutoBotX",
     cpu: "0x0A2",
     color: "emerald"
   },

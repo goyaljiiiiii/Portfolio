@@ -6,7 +6,7 @@ export async function POST() {
     // Check for authorization token if needed in production (e.g. from req.headers)
     // const authHeader = req.headers.get("authorization");
 
-    const repos = await syncGitHubData("goyaljiiiiii");
+    const repos = await syncGitHubData("nandinigoyaldev");
     return NextResponse.json({
       success: true,
       message: "GitHub repositories synchronized successfully.",
@@ -25,7 +25,7 @@ export async function POST() {
 // Allow GET for simple manual verification/testing in browser or curl
 export async function GET() {
   try {
-    const repos = await syncGitHubData("goyaljiiiiii");
+    const repos = await syncGitHubData("nandinigoyaldev");
     return NextResponse.json({
       success: true,
       message: "GitHub repositories synchronized successfully (via GET).",

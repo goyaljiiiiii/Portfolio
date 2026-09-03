@@ -6,14 +6,21 @@ import { motion, AnimatePresence } from "framer-motion";
 
 const FILE_SYSTEM: Record<string, any> = {
   about: {
-    "me.txt": "Nandini Goyal - Software Developer, Mentor, & Content Creator.",
-    "skills.txt": "React, Next.js, Node.js, Python, TypeScript",
+    "me.txt": "Nandini Goyal - SDR @ algoacquisition | AI Outbound Systems, Campus Lead @ Work2Hire, Founder @ CDN IGNOU, Content Creator @ Self Taught Bob.",
+    "skills.txt": "AI Outbound Systems, B2B Signal Scraping, React, Next.js, Python, TypeScript, IoT, OpenCV, Program Management.",
+    "certifications.txt": "1. Open Source Connect Global 2026\n2. Office Automation Certificate (Hackathon Pre-Assessment)\n3. Beyond the Browser: Angular Meets Generative AI",
+  },
+  experience: {
+    "algoacquisition.txt": "Sales Development Representative (May 2026 - Present, London Area / Remote)\nBuilding AI systems that agentically scrape live web buying signals, map decision makers, & run hyper-personalized outreach across LinkedIn & email.",
+    "work2hire.txt": "Campus Ambassador Program Manager Lead (June 2026 - Present)\nRecruiting, onboarding, and managing ambassador workflows across diverse universities & colleges.",
+    "ssoc.txt": "Project Admin @ Social Summer of Code '26\nLeading open source projects, guiding contributors, and conducting code reviews.",
+    "cdn-ignou.txt": "Founder & Technical Lead @ CDN IGNOU\nOrganizing hackathons, workshops, and student learning events via Commudle.",
   },
   projects: {
-    "open-source.txt": "Open Source Contribution Atelier: A platform for contributors...",
-    "rpg-profile.txt": "Developer RPG Profile: Generate a cool developer card!",
+    "autobotx.txt": "AutoBotX: Award-winning IoT system (2nd Place National Hackathon). Blends hardware sensory loops with Python orchestration.",
+    "autoalign.txt": "AutoAlign: Layout spatial calculation utility recognized on Commudle.",
   },
-  "contact.txt": "Email: connect with me via the contact section!\nGitHub: @nandinigoyaldev",
+  "contact.txt": "Email: nandunandinigoyal@gmail.com\nLinkedIn: linkedin.com/in/nandinigoyaldev\nGitHub: github.com/nandinigoyaldev\nYouTube: youtube.com/@self_taught_bob\nResume: /assets/Nandini.pdf",
 };
 
 export default function Terminal() {
